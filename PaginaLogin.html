@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página de Login</title>
+    <link rel="stylesheet" href="styles-extra.css" />
+    <style>
+      .input-field {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3 class="welcome-message">Seja Bem-Vindo ao CL7</h3>
+      <i class="fas fa-user icon"></i>
+      <!-- Ícone de usuário -->
+      <h2>Login</h2>
+      <input
+        type="email"
+        id="loginEmail"
+        class="input-field"
+        placeholder="E-mail"
+        required
+      />
+      <input
+        type="password"
+        id="loginPassword"
+        class="input-field"
+        placeholder="Senha"
+        required
+      />
+      <button id="btnEntrar" onclick="login()">Entrar</button>
+      <p id="message"></p>
+      <button onclick="showTab('tab2')" class="link-button">Cadastre-se</button>
+    </div>
+
+    <div id="tab2" class="tab">
+      <!-- Conteúdo da Página de Cadastro -->
+      <div class="container">
+        <h2>Cadastro</h2>
+        <input
+          type="text"
+          id="firstName"
+          class="input-field"
+          placeholder="Nome"
+          required
+        />
+        <input
+          type="text"
+          id="lastName"
+          class="input-field"
+          placeholder="Sobrenome"
+          required
+        />
+        <input
+          type="email"
+          id="email"
+          class="input-field"
+          placeholder="E-mail"
+          required
+        />
+        <input
+          type="password"
+          id="registerPassword"
+          class="input-field"
+          placeholder="Senha"
+          required
+        />
+        <input type="checkbox" onclick="togglePassword()" /> Mostrar senha
+        <select id="gender" class="input-field" required>
+          <option value="">Sexo</option>
+          <option value="male">Masculino</option>
+          <option value="female">Feminino</option>
+          <option value="other">Outros</option>
+        </select>
+        <input
+          type="tel"
+          id="phone"
+          class="input-field"
+          placeholder="Telefone"
+          required
+        />
+        <input type="date" id="birthDate" class="input-field" required />
+        <button onclick="register()">Cadastrar</button>
+        <p id="registerMessage"></p>
+      </div>
+    </div>
+
+    <script>
+      function login() {
+        const loginEmail = document.getElementById("loginEmail").value;
+        const loginPassword = document.getElementById("loginPassword").value;
+        const message = document.getElementById("message");
+
+        fetch("http://127.0.0.1:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: loginEmail,
+            senha: loginPassword,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (!data.error) {
+              window.location.href = "index.html";
+              localStorage.setItem("user", JSON.stringify(data.usuario));
+
+            } else {
+              message.innerText = data.error;
+            }
+          });
+      }
+
+      function showTab(tabId) {
+        const tabs = document.querySelectorAll(".tab");
+        tabs.forEach((tab) => {
+          tab.style.display = "none";
+        });
+        document.getElementById(tabId).style.display = "block";
+      }
+
+      function togglePassword() {
+        const passwordField = document.getElementById("registerPassword");
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+        } else {
+          passwordField.type = "password";
+        }
+      }
+
+      function register() {
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("registerPassword").value;
+        const gender = document.getElementById("gender").value;
+        const phone = document.getElementById("phone").value;
+        const birthDate = document.getElementById("birthDate").value;
+        const registerMessage = document.getElementById("registerMessage");
+
+        if (
+          firstName &&
+          lastName &&
+          email &&
+          password &&
+          gender &&
+          phone &&
+          birthDate
+        ) {
+          fetch("http://127.0.0.1:3000/register", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              nome: `${firstName} ${lastName}`,
+              dataNascimento: birthDate,
+              email: email,
+              senha: password,
+              sexo: gender,
+              telefone: phone,
+            }),
+          }).then((response) => response.json());
+          registerMessage.innerText = "Cadastro realizado com sucesso!";
+          showTab("tab1");
+        } else {
+          registerMessage.innerText = "Por favor, preencha todos os campos.";
+        }
+      }
+
+      // Inicializa a aba de login como visível
+      showTab("tab1");
+    </script>
+  </body>
+</html>

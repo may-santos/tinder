@@ -1,0 +1,198 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(
+    to bottom,
+    pink,
+    purple
+  ); /* Adiciona o gradiente de rosa para roxo */
+}
+
+#content {
+  flex: 1;
+  padding: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background-color: #f0f0f0;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+}
+
+button {
+  background-color: #6a0dad;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #5a0cad;
+}
+
+/* Estilos específicos para a aba Like/Deslike */
+.container {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.actions button {
+  font-size: 2rem;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.actions button:hover {
+  transform: scale(1.2);
+}
+
+.like {
+  background-color: pink;
+  color: white;
+}
+
+.dislike {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.notification {
+  margin-top: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+.notification.hidden {
+  display: none;
+}
+
+.notification.visible {
+  display: block;
+}
+
+/* Estilos específicos para a aba Bate papo */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chat-profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chat-profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.upload-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.upload-icon {
+  font-size: 50px;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  display: none; /* Oculta o input */
+}
+
+#preview {
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover; /* Ajusta a imagem dentro do espaço */
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  display: none; /* Inicialmente oculto */
+}
+
+/* Estilizando o textarea */
+textarea {
+  margin-top: 20px;
+  width: 300px;
+  height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  resize: none; /* Desabilita o redimensionamento */
+}
+
+#message-input {
+  width: auto;
+}
+
+/* Botão de salvar (opcional) */
+.save-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #45a049;
+}
+
+.sent {
+  background-color: #889dbe;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 10px;
+  margin: 10px;
+  color: white;
+}
+
+.received {
+  background-color: #889dbe;
+  display: flex;
+  padding: 10px;
+  margin: 10px;
+  color: white;
+}

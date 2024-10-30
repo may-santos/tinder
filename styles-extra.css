@@ -1,0 +1,156 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #6a1b9a, #f50057); /* Degradê de roxo para rosa */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 50px; /* Aumente o espaçamento interno */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 400px; /* Aumente a largura */
+    backdrop-filter: blur(10px);
+}
+
+h3 {
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    color: #6a1b9a; /* Cor da frase */
+    font-size: 2em; /* Aumenta o tamanho da fonte */
+    font-weight: bold; /* Torna a fonte em negrito */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+}
+.welcome-message {
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    color: #6a1b9a; /* Cor da frase */
+    font-size: 2em; /* Aumenta o tamanho da fonte */
+    font-weight: bold; /* Torna a fonte em negrito */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+    transition: transform 0.3s, color 0.3s; /* Transições suaves */
+}
+
+.welcome-message:hover {
+    transform: scale(1.05); /* Aumenta levemente ao passar o mouse */
+    color: #4a148c; /* Muda a cor ao passar o mouse */
+}
+
+
+h2 {
+    margin-bottom: 20px;
+    color: #6a1b9a; /* Roxo escuro */
+    font-weight: 600;
+    font-size: 1.8em; /* Tamanho de fonte aumentado */
+}
+
+.icon {
+    font-size: 60px; /* Tamanho do ícone */
+    color: #6a1b9a; /* Roxo escuro */
+    margin-bottom: 15px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 15px; /* Mais espaçamento interno */
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0; /* Borda mais suave */
+    border-radius: 10px; /* Bordas arredondadas */
+    font-size: 16px;
+    background-color: rgba(243, 229, 245, 0.9); /* Roxo claro semi-transparente */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#btnEntrar {
+    margin-top: 10px;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #6a1b9a; /* Roxo escuro */
+    box-shadow: 0 0 8px rgba(106, 27, 154, 0.6); /* Sombra mais intensa */
+}
+
+button {
+    background-color: #6a1b9a; /* Roxo escuro */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px; /* Mais espaçamento interno */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+    font-weight: bold; /* Negrito para o texto do botão */
+}
+
+button:hover {
+    background-color: #4a148c; /* Roxo ainda mais escuro */
+    transform: translateY(-3px); /* Efeito de elevação mais pronunciado */
+}
+
+button:active {
+    transform: translateY(0); /* Efeito de pressionar */
+}
+
+#message {
+    margin-top: 15px;
+    color: red;
+    font-size: 14px;
+}
+h2 {
+    margin-bottom: 20px;
+    color: #6a1b9a; /* Roxo escuro */
+    font-weight: 600;
+    font-size: 1.8em; /* Tamanho de fonte aumentado */
+}
+
+/* Novo estilo para o título de boas-vindas */
+h2:first-of-type {
+    margin-top: 0; /* Remove a margem superior */
+    font-size: 2em; /* Aumenta o tamanho da fonte se necessário */
+}
+button {
+    background-color: #6a1b9a; /* Roxo escuro */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px; /* Mais espaçamento interno */
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    width: 100%;
+    font-weight: bold; /* Negrito para o texto do botão */
+}
+
+button:hover {
+    background-color: #4a148c; /* Roxo ainda mais escuro */
+    transform: translateY(-3px); /* Efeito de elevação mais pronunciado */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
+button:active {
+    transform: translateY(0); /* Efeito de pressionar */
+    box-shadow: none; /* Remove a sombra quando pressionado */
+}
+
+button:focus {
+    outline: none;
+    animation: pulse 0.5s infinite; /* Animação de pulso */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

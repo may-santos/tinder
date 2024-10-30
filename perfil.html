@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Foto com Informações</title>
+    <style>
+        .upload-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .upload-icon {
+            font-size: 50px;
+            cursor: pointer;
+            margin-bottom: 20px; /* Adiciona espaçamento abaixo do ícone */
+        }
+        #preview {
+            display: block;
+            margin: 20px auto;
+            max-width: 100px;
+            max-height: 100px;
+            border-radius: 50%;
+        }
+        .save-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 20px;
+        }
+    </style>
+    <!-- Link para o Font Awesome (opcional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<div class="upload-container">
+    <i class="fas fa-camera upload-icon" id="uploadIcon"></i>
+    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+    <img id="preview" alt="">
+    
+    <!-- Caixa de texto para informações -->
+    <textarea id="userInfo" placeholder="Escreva algo sobre você..."></textarea>
+
+    <!-- Botão para salvar (opcional, caso queira salvar as informações) -->
+    <button class="save-btn" id="saveButton">Salvar</button>
+</div>
+
+<script>
+    document.getElementById('uploadIcon').addEventListener('click', () => {
+        document.getElementById('fileInput').click();
+    });
+
+    document.getElementById('fileInput').addEventListener('change', (event) => {
+        const file = event.target.files;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('preview').src = e.target.result;
+            localStorage.setItem('profileImage', e.target.result);
+        };
+        reader.readAsDataURL(file);
+    });
+
+    document.getElementById('saveButton').addEventListener('click', () => {
+        const userInfo = document.getElementById('userInfo').value;
+        localStorage.setItem('userInfo', userInfo);
+        alert('Informações salvas com sucesso!');
+    });
+
+    window.onload = function() {
+        const savedImage = localStorage.getItem('profileImage');
+        const savedInfo = localStorage.getItem('userInfo');
+        if (savedImage) {
+            document.getElementById('preview').src = savedImage;
+        }
+        if (savedInfo) {
+            document.getElementById('userInfo').value = savedInfo;
+        }
+    };
+</script>
+
+</body>
+</html>
